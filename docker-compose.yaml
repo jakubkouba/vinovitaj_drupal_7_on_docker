@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  vinovitaj:
+    image: drupal:7
+    ports:
+      - 80:80
+    environment:
+      MYSQL_DATABASE: vinovitaj
+      MYSQL_USER: vinovitaj
+      MYSQL_PASSWORD: vinovitaj
+      MYSQL_HOST: mysql_db:3306
+    volumes:
+      - ./src/sites/www.vinovitaj.com:/var/www/html/sites/www.vinovitaj.com
+      - ./src/sites/all:/var/www/html/sites/all
+    depends_on:
+      - mysql_db
+
+
+  mysql_db:
+    image: mysql:5.7
+    volumes:
+      - type: volume
+        source: dbdata
+        target: /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vinovitaj
+      MYSQL_USER: vinovitaj
+      MYSQL_PASSWORD: vinovitaj
+    ports:
+      - 3306:3306
+
+volumes:
+  dbdata:

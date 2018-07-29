@@ -1,0 +1,10 @@
+name = Vinovitaj postcode shipping
+description = Compares postcode
+dependencies[] = uc_cart
+dependencies[] = rules
+package = Vinovitaj
+core = 7.x
+
+version = "7.x-1.0"
+
+

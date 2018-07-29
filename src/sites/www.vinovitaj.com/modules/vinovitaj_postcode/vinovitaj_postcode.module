@@ -1,0 +1,62 @@
+<?php
+/**
+*  author: roman@prochazka.co.uk
+*  This simple module has been primarily created to compare (UK) postcode patterns for Ubercart shipping quote purposes
+*  Feel free to use or modify as you wish 
+*  Author does not accept any responsibility or liability whatsoever for the use of this code.
+*/
+
+/**
+ * Implements hook_rules_condition_info() on behalf of the pseudo data module.
+ * @see rules_core_modules()
+ */
+function vinovitaj_postcode_rules_condition_info() {
+  return array(
+    'vinovitaj_postcode_rules_condition_vinovitaj_postcode' => array(
+      'label' => t('Vinovitaj postcode comparison'),
+      'parameter' => array(
+        'data' => array(
+          'type' => '*',
+          'label' => t('Data to compare'),
+          'description' => t('The data to be compared, specified by using a data selector, e.g. "node:author:name".'),
+          'allow null' => TRUE,
+        ),
+        'op' => array(
+          'type' => 'text',
+          'label' => t('Operator'),
+          'description' => t('The comparison operator.'),
+          'optional' => TRUE,
+          'default value' => '==',
+          'options list' => 'vinovitaj_postcode_operator_options', 
+          'restriction' => 'input',
+        ),
+        'value' => array(
+          'type' => 'list<text>',
+          'label' => t('Data value'),
+          'description' => t('The value to compare the data with.'),
+         'allow null' => TRUE,
+        ),
+      ),
+      'group' => t('Data')
+    ),
+
+  );
+}
+
+
+/*
+* Condition: Comment is published 
+*/
+function vinovitaj_postcode_rules_condition_vinovitaj_postcode($data, $op, $value) {
+$full_postcode = strtoupper(trim($data));
+//strip_tags?
+$postcode = substr($full_postcode,0,2);
+return in_array($postcode,$value);
+}
+
+function vinovitaj_postcode_operator_options() {
+  return array(
+    'IN' => t('is one of')
+  );
+}
+?>

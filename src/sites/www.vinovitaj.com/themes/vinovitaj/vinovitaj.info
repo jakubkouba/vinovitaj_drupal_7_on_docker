@@ -1,0 +1,15 @@
+name = Vinovitaj
+description = Vinovitajtheme
+version = VERSION
+core = 7.x
+stylesheets[all][] = style.css
+stylesheet[all][] = http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600'
+stylesheets[print][] = print.css
+settings[garland_width] = fixed
+base theme = garland
+
+; Information added by drupal.org packaging script on 2012-02-01
+version = "7.12"
+project = "drupal"
+datestamp = "1328134560"
+

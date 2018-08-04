@@ -13,6 +13,7 @@ services:
     volumes:
       - ./src/sites/www.vinovitaj.com:/var/www/html/sites/www.vinovitaj.com
       - ./src/sites/all:/var/www/html/sites/all
+    restart: always
     depends_on:
       - mysql_db
 
@@ -28,6 +29,7 @@ services:
       MYSQL_DATABASE: vinovitaj
       MYSQL_USER: vinovitaj
       MYSQL_PASSWORD: vinovitaj
+    restart: always
     ports:
       - 3306:3306
 

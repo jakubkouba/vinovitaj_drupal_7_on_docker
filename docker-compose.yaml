@@ -14,6 +14,7 @@ services:
     volumes:
       - ./src/sites/www.vinovitaj.com:/var/www/html/sites/www.vinovitaj.com
       - ./src/sites/all:/var/www/html/sites/all
+      - ./src/.htaccess:/var/www/html/.htaccess
     restart: always
     depends_on:
       - mysql_db
@@ -31,3 +32,4 @@ services:
     restart: always
     ports:
       - 3306:3306
+

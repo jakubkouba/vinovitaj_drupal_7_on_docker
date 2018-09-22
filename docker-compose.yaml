@@ -9,7 +9,8 @@ services:
       MYSQL_DATABASE: vinovitaj
       MYSQL_USER: vinovitaj
       MYSQL_PASSWORD: vinovitaj
-      MYSQL_HOST: mysql_db:3306
+      MYSQL_HOST: mysql_db
+      MYSQL_PORT: 3306
     volumes:
       - ./src/sites/www.vinovitaj.com:/var/www/html/sites/www.vinovitaj.com
       - ./src/sites/all:/var/www/html/sites/all
@@ -21,9 +22,7 @@ services:
   mysql_db:
     image: mysql:5.7
     volumes:
-      - type: volume
-        source: dbdata
-        target: /var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: vinovitaj
@@ -32,6 +31,3 @@ services:
     restart: always
     ports:
       - 3306:3306
-
-volumes:
-  dbdata:

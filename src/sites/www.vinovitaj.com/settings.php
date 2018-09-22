@@ -210,6 +210,7 @@ $databases['default']['default'] = array(
       'username' => getenv('MYSQL_USER'), //dbo416229607',
       'password' => getenv('MYSQL_PASSWORD'),
       'host' => getenv('MYSQL_HOST'), //db416229607.db.1and1.com',
+      'port' => getenv('MYSQL_PORT'),
       'prefix' => '',
     );
 
